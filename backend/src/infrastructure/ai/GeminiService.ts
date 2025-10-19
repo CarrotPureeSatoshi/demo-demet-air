@@ -105,10 +105,10 @@ export class GeminiService {
       } as any); // Type assertion car modalities n'est pas encore dans les types OpenAI
 
       // Extraire l'image générée (retournée en base64 data URL)
-      const message = completion.choices[0]?.message;
+      const message = completion.choices[0]?.message as any;
 
       if (message?.images && message.images.length > 0) {
-        const imageDataUrl = (message.images[0] as any).image_url.url;
+        const imageDataUrl = message.images[0].image_url.url;
         // Retourner le data URL pour traitement par ProjectService
         return imageDataUrl;
       }

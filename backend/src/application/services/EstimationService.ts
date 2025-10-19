@@ -21,11 +21,22 @@ export class EstimationService {
       (analysisData.obstacles.length > 2 || analysisData.materiaux_visibles.length > 3);
 
     // Prix de base
-    let priceRange = this.BASE_PRICES[type];
+    let priceRange: { min: number; max: number };
     if (type === 'facade') {
       priceRange = isComplexFacade
         ? this.BASE_PRICES.facade_complexe
         : this.BASE_PRICES.facade_simple;
+    } else if (type === 'toiture') {
+      priceRange = this.BASE_PRICES.toiture;
+    } else if (type === 'mixte') {
+      priceRange = this.BASE_PRICES.mixte;
+    } else if (type === 'facade_simple') {
+      priceRange = this.BASE_PRICES.facade_simple;
+    } else if (type === 'facade_complexe') {
+      priceRange = this.BASE_PRICES.facade_complexe;
+    } else {
+      // Fallback par défaut
+      priceRange = this.BASE_PRICES.facade_simple;
     }
 
     let prixM2Min = priceRange.min;
