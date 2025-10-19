@@ -1,0 +1,252 @@
+/* Upload Page Styles */
+
+.upload-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.header {
+  padding: 2rem;
+  text-align: center;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 2rem;
+  color: #2d5016;
+  margin: 0;
+}
+
+.upload-main {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #2d5016;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dropzone {
+  border: 3px dashed #cbd5e0;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.dropzone:hover, .dropzone.dragging {
+  border-color: #4a7c25;
+  background: #f0f8f0;
+  transform: scale(1.02);
+}
+
+.dropzone-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.dropzone-text {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.dropzone-hint {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.file-preview {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.file-name {
+  font-weight: bold;
+  color: #2d5016;
+}
+
+.file-size {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.file-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.description-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.description-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.description-container input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.error-message {
+  background: #fee;
+  color: #c00;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: #cbd5e0;
+  color: #666;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  margin-bottom: 0.75rem;
+}
+
+.btn-primary.active {
+  background: linear-gradient(135deg, #4a7c25 0%, #2d5016 100%);
+  color: white;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+.btn-primary.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(74, 124, 37, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 124, 37, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(74, 124, 37, 0); }
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: #4a7c25;
+  color: #4a7c25;
+}
+
+.generation-time {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.tips {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.tips p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.social-proof {
+  font-weight: 500;
+  color: #4a7c25 !important;
+}
+
+/* Overlay de génération */
+.generation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.generation-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.generation-modal h3 {
+  color: #2d5016;
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a7c25 0%, #2d5016 100%);
+  transition: width 0.5s ease;
+}
+
+.progress-message {
+  color: #666;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.progress-percent {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d5016;
+}
