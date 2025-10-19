@@ -26,7 +26,7 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
           formId: '3db0b61d-feba-400e-be7a-039cf1d4420b',
           region: 'eu1',
           target: '#hubspot-form-container',
-          onFormSubmitted: async ($form: any, data: any) => {
+          onFormSubmitted: async (_$form: any, data: any) => {
             // Récupérer l'email soumis
             const emailField = data.submissionValues.find((field: any) => field.name === 'email');
             const email = emailField?.value;
