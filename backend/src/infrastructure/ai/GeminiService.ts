@@ -107,12 +107,33 @@ export class GeminiService {
       // Extraire l'image générée (retournée en base64 data URL)
       const message = completion.choices[0]?.message as any;
 
+      console.log('🔍 OpenRouter response structure:', JSON.stringify({
+        hasMessage: !!message,
+        messageKeys: message ? Object.keys(message) : [],
+        content: message?.content,
+        images: message?.images,
+        fullMessage: message,
+      }, null, 2));
+
+      // Vérifier différents formats de réponse possibles
       if (message?.images && message.images.length > 0) {
-        const imageDataUrl = message.images[0].image_url.url;
-        // Retourner le data URL pour traitement par ProjectService
+        const imageDataUrl = message.images[0].image_url?.url || message.images[0];
+        console.log('✅ Image extracted from message.images');
         return imageDataUrl;
       }
 
+      // Vérifier si l'image est dans content (format alternatif)
+      if (message?.content) {
+        const content = Array.isArray(message.content) ? message.content : [message.content];
+        for (const item of content) {
+          if (item.type === 'image_url' && item.image_url?.url) {
+            console.log('✅ Image extracted from message.content');
+            return item.image_url.url;
+          }
+        }
+      }
+
+      console.error('❌ No image found in response. Full completion:', JSON.stringify(completion, null, 2));
       throw new Error('Aucune image générée par le modèle');
     } catch (error) {
       console.error('OpenRouter image generation error:', error);
