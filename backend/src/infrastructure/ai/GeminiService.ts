@@ -30,9 +30,9 @@ export class GeminiService {
     const prompt = this.buildAnalysisPromptDemetAir(typeStructure, userDescription);
 
     try {
-      // OpenRouter with Gemini Vision (paid version to avoid rate limits)
+      // OpenRouter with Gemini Flash 1.5 (stable paid version)
       const completion = await this.client.chat.completions.create({
-        model: 'google/gemini-2.0-flash-exp',
+        model: 'google/gemini-flash-1.5',
         messages: [
           {
             role: 'user',
