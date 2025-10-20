@@ -220,6 +220,14 @@ ANALYSE DÉTAILLÉE :
 
     let prompt = `Tu es un architecte paysagiste professionnel spécialisé en végétalisation de façades et murs végétaux. Ta mission est de créer une image ULTRA-RÉALISTE montrant la structure végétalisée selon les spécifications DEMET'AIR.
 
+⚠️ RÈGLE ABSOLUE - CADRAGE IDENTIQUE :
+- CONSERVE EXACTEMENT le même point de vue que l'image originale
+- CONSERVE EXACTEMENT le même angle de prise de vue
+- CONSERVE EXACTEMENT le même niveau de zoom (ni plus proche, ni plus éloigné)
+- CONSERVE EXACTEMENT le même cadrage (mêmes éléments visibles aux bords)
+- CONSERVE EXACTEMENT les mêmes proportions du bâtiment dans le cadre
+- L'image générée doit être IDENTIQUE à l'originale, sauf pour l'ajout de végétation
+
 TYPE DE PROJET : ${isToiture ? 'Toiture végétalisée' : 'Façade/Mur végétalisé avec Panneau DEMET\'AIR'}
 
 **ZONE À VÉGÉTALISER :**
@@ -237,7 +245,25 @@ ${analysisData.obstacles.map(obs => `- ${obs}`).join('\n')}
 - Fougères compactes (15%)
 - Succulentes grises (15%)
 
-[... reste du prompt identique à NanoBananaService ...]`;
+**CONTRAINTES TECHNIQUES STRICTES :**
+1. CADRAGE : L'image finale doit avoir EXACTEMENT le même cadrage que l'image originale
+2. ZOOM : Ne pas zoomer ni dézoomer, garder la même échelle
+3. ANGLE : Conserver exactement le même angle de vue
+4. PROPORTIONS : Les bâtiments doivent avoir les mêmes proportions dans l'image
+5. ÉLÉMENTS : Tous les éléments visibles dans l'original doivent rester visibles au même endroit
+6. PERSPECTIVE : Maintenir la même perspective et profondeur de champ
+
+**INSTRUCTIONS DE VÉGÉTALISATION :**
+- Ajouter la végétation UNIQUEMENT sur les zones spécifiées
+- Ne PAS modifier l'environnement, le ciel, le sol ou les bâtiments adjacents
+- La végétation doit paraître naturellement intégrée
+- Respecter l'exposition solaire et l'orientation
+- Créer un rendu PHOTORÉALISTE
+- La végétation doit être dense (${analysisData.densite_recommandee === 'dense' ? '90-95%' : '80-85%'} de couverture)
+- Respecter SCRUPULEUSEMENT les marges autour des obstacles (15cm pour fenêtres/portes, 10cm pour angles)
+
+**RÉSULTAT ATTENDU :**
+Une image identique à l'originale où SEULE la zone spécifiée est végétalisée, avec un rendu ultra-réaliste.`;
 
     if (userDescription) {
       prompt += `\n\n**CONTRAINTE CLIENT :**\n"${userDescription}"`;
