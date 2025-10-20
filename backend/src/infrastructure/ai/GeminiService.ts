@@ -30,9 +30,9 @@ export class GeminiService {
     const prompt = this.buildAnalysisPromptDemetAir(typeStructure, userDescription);
 
     try {
-      // OpenRouter with Gemini Flash 1.5 (stable paid version)
+      // OpenRouter with Gemini 2.5 Flash (vision analysis)
       const completion = await this.client.chat.completions.create({
-        model: 'google/gemini-flash-1.5',
+        model: 'google/gemini-2.5-flash',
         messages: [
           {
             role: 'user',
@@ -76,9 +76,9 @@ export class GeminiService {
     );
 
     try {
-      // Utiliser Gemini 2.5 Flash Image (Nano Banana) pour génération d'images
+      // Utiliser Gemini 2.5 Flash Image Preview (Nano Banana) pour génération d'images
       const completion = await this.client.chat.completions.create({
-        model: 'google/gemini-2.5-flash-image',
+        model: 'google/gemini-2.5-flash-image-preview',
         messages: [
           {
             role: 'user',
