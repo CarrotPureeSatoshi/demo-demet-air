@@ -96,8 +96,8 @@ export class GeminiService {
             ],
           },
         ],
-        // CRUCIAL : activer la génération d'images
-        modalities: ['image', 'text'],
+        // CRUCIAL : activer la génération d'images (ordre important : text, image)
+        modalities: ['text', 'image'],
         // Configuration aspect ratio (optionnel)
         image_config: {
           aspect_ratio: '4:3', // Adapter selon la surface (façade vs toiture)
