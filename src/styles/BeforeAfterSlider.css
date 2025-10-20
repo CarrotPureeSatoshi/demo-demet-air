@@ -40,11 +40,6 @@
   z-index: 2;
 }
 
-.image-container.before-overlay img {
-  transform: scale(0.88);
-  transform-origin: center;
-}
-
 .label {
   position: absolute;
   top: 1rem;
