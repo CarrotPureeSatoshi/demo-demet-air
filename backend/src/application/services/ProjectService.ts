@@ -113,7 +113,7 @@ export class ProjectService {
           .resize(targetWidth, targetHeight, {
             fit: 'fill', // Force exact dimensions, may distort
           })
-          .toBuffer();
+          .toBuffer() as Buffer;
 
         console.log(`✅ Image resized successfully`);
       } catch (resizeError) {
