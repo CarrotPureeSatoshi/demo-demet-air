@@ -36,10 +36,20 @@ export function Result() {
     if (!id) return;
 
     try {
+      console.log('📤 Calling unlock API with email:', email);
       const response = await projectService.unlock(id, email);
+      console.log('✅ Unlock API response:', response);
       setProject(response.project);
       setShowModal(false);
+      console.log('🚪 Modal should be closed now');
     } catch (err: any) {
+      console.error('❌ Unlock API failed:', err);
+      // Fermer quand même la modale après 2 secondes et recharger le projet
+      setTimeout(() => {
+        console.log('⏰ Closing modal after timeout, reloading project...');
+        setShowModal(false);
+        loadProject();
+      }, 2000);
       throw new Error(err.response?.data?.error || 'Erreur lors du déblocage');
     }
   };
@@ -105,17 +115,14 @@ export function Result() {
             <h1 className="logo">🌿 DEMET'AIR</h1>
           </header>
 
-          {/* Slider Avant/Après */}
-          {project.originalImageUrl && project.generatedImageUrl && (
-            <BeforeAfterSlider
-              beforeImage={project.originalImageUrl}
-              afterImage={project.generatedImageUrl}
-            />
-          )}
+          {/* Layout 2 colonnes : Devis (33%) + Image (67%) */}
+          <div className="two-column-layout">
+            {/* Colonne gauche : Devis */}
+            <div className="left-column">
 
-          {/* Bloc Estimation */}
-          {estimation && (
-            <div className="estimation-block">
+              {/* Bloc Estimation */}
+              {estimation && (
+                <div className="estimation-block">
               <h2>📊 Votre estimation personnalisée</h2>
               <div className="estimation-grid">
                 <div className="estimation-item">
@@ -161,12 +168,12 @@ export function Result() {
                   {' '}-{' '}
                   {formatPrice(estimation.aides_financieres.cout_net_max)}
                 </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Ce qui est inclus */}
-          <div className="inclus-block">
+              {/* Ce qui est inclus */}
+              <div className="inclus-block">
             <h3>🌿 CE QUI EST INCLUS</h3>
             <ul>
               <li>✅ Substrat VGHolz® 100% biosourcé</li>
@@ -176,10 +183,10 @@ export function Result() {
               <li>✅ Suivi IoT monitoring</li>
               <li>✅ Conformité réglementaire RE2020</li>
             </ul>
-          </div>
+              </div>
 
-          {/* CTAs */}
-          <div className="cta-container">
+              {/* CTAs */}
+              <div className="cta-container">
             <button className="btn-primary large" onClick={handleCalendlyClick}>
               📅 PRENDRE RENDEZ-VOUS GRATUIT
             </button>
@@ -189,14 +196,26 @@ export function Result() {
             <a href="#portfolio" className="link-discrete">
               👀 Voir nos 30+ projets réalisés
             </a>
-          </div>
+              </div>
 
-          {/* Confirmation collecte */}
-          {project.leadEmail && (
-            <p className="email-confirmation">
-              ✅ Merci ! Votre demande a été enregistrée.
-            </p>
-          )}
+              {/* Confirmation collecte */}
+              {project.leadEmail && (
+                <p className="email-confirmation">
+                  ✅ Merci ! Votre demande a été enregistrée.
+                </p>
+              )}
+            </div>
+
+            {/* Colonne droite : Image générée */}
+            <div className="right-column">
+              {project.originalImageUrl && project.generatedImageUrl && (
+                <BeforeAfterSlider
+                  beforeImage={project.originalImageUrl}
+                  afterImage={project.generatedImageUrl}
+                />
+              )}
+            </div>
+          </div>
         </div>
       )}
     </div>

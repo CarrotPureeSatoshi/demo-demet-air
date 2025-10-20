@@ -36,14 +36,12 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
             console.log('📧 Email extracted:', email);
 
             if (email) {
-              try {
-                console.log('🔓 Calling unlock API...');
-                await onSubmit(email);
-                console.log('✅ Unlock successful, modal should close now');
-              } catch (error) {
+              // Appeler l'API unlock
+              onSubmit(email).catch((error) => {
                 console.error('❌ Error unlocking project:', error);
-                alert('Erreur lors du déblocage. Veuillez réessayer.');
-              }
+              });
+
+              console.log('✅ Form submitted, API called');
             } else {
               console.error('❌ No email found in submission');
             }
