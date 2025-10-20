@@ -17,7 +17,7 @@
   color: #4a7c25;
 }
 
-/* Background image (floutée si non unlock) */
+/* Background normal (pas d'image en fond) */
 .background-container {
   position: fixed;
   top: 0;
@@ -25,25 +25,7 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-}
-
-.background-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.background-container img.blurred-image {
-  filter: blur(20px);
-}
-
-.blur-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: #f5f7fa;
 }
 
 /* Contenu principal */
@@ -71,8 +53,14 @@
 .right-column {
   /* Colonne de l'image */
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+  min-height: 70vh;
+}
+
+.right-column > * {
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -90,8 +78,8 @@
 
 /* Estimation block */
 .estimation-block {
-  margin-bottom: 2rem;
-  padding: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
   background: #f8f9fa;
   border-radius: 12px;
 }
@@ -99,7 +87,8 @@
 .estimation-block h2 {
   text-align: center;
   color: #2d5016;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
 .estimation-grid {
@@ -123,14 +112,14 @@
 .estimation-item .label {
   display: block;
   color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
 }
 
 .estimation-item .value {
   display: block;
   color: #2d5016;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 

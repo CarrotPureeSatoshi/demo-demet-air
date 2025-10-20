@@ -111,7 +111,7 @@ export function Result() {
       {/* Contenu principal (visible uniquement si unlocked) */}
       {project.isUnlocked && (
         <div className="result-content">
-          <header className="result-header">
+          <header className="header">
             <h1 className="logo">🌿 DEMET'AIR</h1>
           </header>
 
@@ -123,31 +123,49 @@ export function Result() {
               {/* Bloc Estimation */}
               {estimation && (
                 <div className="estimation-block">
-              <h2>📊 Votre estimation personnalisée</h2>
+              <h2>
+                <svg style={{display: 'inline', width: '20px', height: '20px', marginRight: '8px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Votre estimation personnalisée
+              </h2>
               <div className="estimation-grid">
                 <div className="estimation-item">
-                  <span className="label">📏 Surface détectée</span>
+                  <span className="label">
+                    <svg style={{display: 'inline', width: '14px', height: '14px', marginRight: '4px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                    Surface détectée
+                  </span>
                   <span className="value">~{estimation.surface_m2} m²</span>
                 </div>
                 <div className="estimation-item">
-                  <span className="label">📍 Localisation</span>
+                  <span className="label">
+                    <svg style={{display: 'inline', width: '14px', height: '14px', marginRight: '4px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Localisation
+                  </span>
                   <span className="value">{estimation.localisation}</span>
                 </div>
                 <div className="estimation-item">
-                  <span className="label">🏢 Type</span>
+                  <span className="label">
+                    <svg style={{display: 'inline', width: '14px', height: '14px', marginRight: '4px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg>
+                    Type
+                  </span>
                   <span className="value">
                     {estimation.type_batiment === 'facade' ? 'Façade résidentielle' :
                      estimation.type_batiment === 'toiture' ? 'Toiture' : 'Façade + Toiture'}
                   </span>
                 </div>
                 <div className="estimation-item highlight">
-                  <span className="label">💰 Prix total</span>
+                  <span className="label">
+                    <svg style={{display: 'inline', width: '14px', height: '14px', marginRight: '4px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Prix total
+                  </span>
                   <span className="value">
                     {formatPrice(estimation.prix_total_min)} - {formatPrice(estimation.prix_total_max)} TTC
                   </span>
                 </div>
                 <div className="estimation-item">
-                  <span className="label">📐 Prix au m²</span>
+                  <span className="label">
+                    <svg style={{display: 'inline', width: '14px', height: '14px', marginRight: '4px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    Prix au m²
+                  </span>
                   <span className="value">
                     {estimation.prix_m2_min}€ - {estimation.prix_m2_max}€/m²
                   </span>
@@ -155,15 +173,20 @@ export function Result() {
               </div>
 
               <div className="aides-block">
-                <h3>💚 Après aides financières</h3>
+                <h3>
+                  <svg style={{display: 'inline', width: '18px', height: '18px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Après aides financières
+                </h3>
                 <p className="aide-detail">
-                  ✅ Crédit d'impôt 30% :
+                  <svg style={{display: 'inline', width: '14px', height: '14px', marginRight: '4px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  Crédit d'impôt 30% :
                   {' '}-{formatPrice(estimation.aides_financieres.credit_impot_30_min)}
                   {' '}à{' '}
                   -{formatPrice(estimation.aides_financieres.credit_impot_30_max)}
                 </p>
                 <p className="cout-net">
-                  🎉 Coût net estimé :
+                  <svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+                  Coût net estimé :
                   {' '}{formatPrice(estimation.aides_financieres.cout_net_min)}
                   {' '}-{' '}
                   {formatPrice(estimation.aides_financieres.cout_net_max)}
@@ -174,34 +197,41 @@ export function Result() {
 
               {/* Ce qui est inclus */}
               <div className="inclus-block">
-            <h3>🌿 CE QUI EST INCLUS</h3>
+            <h3>
+              <svg style={{display: 'inline', width: '18px', height: '18px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M12 11v11"/><path d="M16 19a4 4 0 0 1-8 0"/></svg>
+              CE QUI EST INCLUS
+            </h3>
             <ul>
-              <li>✅ Substrat VGHolz® 100% biosourcé</li>
-              <li>✅ Végétaux adaptés au climat {estimation?.localisation.toLowerCase()}</li>
-              <li>✅ Installation par professionnel certifié</li>
-              <li>✅ Garantie décennale 10 ans</li>
-              <li>✅ Suivi IoT monitoring</li>
-              <li>✅ Conformité réglementaire RE2020</li>
+              <li><svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>Substrat VGHolz® 100% biosourcé</li>
+              <li><svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>Végétaux adaptés au climat {estimation?.localisation.toLowerCase()}</li>
+              <li><svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>Installation par professionnel certifié</li>
+              <li><svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>Garantie décennale 10 ans</li>
+              <li><svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>Suivi IoT monitoring</li>
+              <li><svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>Conformité réglementaire RE2020</li>
             </ul>
               </div>
 
               {/* CTAs */}
               <div className="cta-container">
             <button className="btn-primary large" onClick={handleCalendlyClick}>
-              📅 PRENDRE RENDEZ-VOUS GRATUIT
+              <svg style={{display: 'inline', width: '18px', height: '18px', marginRight: '8px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              PRENDRE RENDEZ-VOUS GRATUIT
             </button>
             <button className="btn-tertiary small" onClick={() => window.location.href = '/'}>
-              🔄 Générer une autre version
+              <svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Générer une autre version
             </button>
             <a href="#portfolio" className="link-discrete">
-              👀 Voir nos 30+ projets réalisés
+              <svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Voir nos 30+ projets réalisés
             </a>
               </div>
 
               {/* Confirmation collecte */}
               {project.leadEmail && (
                 <p className="email-confirmation">
-                  ✅ Merci ! Votre demande a été enregistrée.
+                  <svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px', color: '#4a7c25'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  Merci ! Votre demande a été enregistrée.
                 </p>
               )}
             </div>
