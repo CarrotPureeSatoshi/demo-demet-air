@@ -3,8 +3,9 @@
 import { Schema } from 'mongoose';
 
 export const LeadSchema = new Schema({
+  _id: { type: String, required: true }, // UUID string instead of ObjectId
   email: { type: String, required: true, lowercase: true, index: true },
-  projectId: { type: Schema.Types.ObjectId, required: true, ref: 'Project', index: true },
+  projectId: { type: String, required: true, ref: 'Project', index: true }, // String UUID instead of ObjectId
   metadata: {
     source: String,
     utm_source: String,

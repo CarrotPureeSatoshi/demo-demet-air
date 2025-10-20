@@ -3,6 +3,7 @@
 import { Schema } from 'mongoose';
 
 export const ProjectSchema = new Schema({
+  _id: { type: String, required: true }, // UUID string instead of ObjectId
   originalImageUrl: { type: String, required: true },
   generatedImageUrl: { type: String, default: null },
   analysisData: {
