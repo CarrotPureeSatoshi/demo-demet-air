@@ -113,19 +113,7 @@ export function Result() {
   };
 
   return (
-    <div className={`result-page ${!project.isUnlocked ? 'blurred' : ''}`}>
-      {/* Image de fond (floutée si non unlock) */}
-      <div className="background-container">
-        {project.generatedImageUrl && (
-          <img
-            src={project.generatedImageUrl}
-            alt="Visualisation végétalisée"
-            className={!project.isUnlocked ? 'blurred-image' : ''}
-          />
-        )}
-        {!project.isUnlocked && <div className="blur-overlay" />}
-      </div>
-
+    <div className="result-page">
       {/* Modal Email (non fermable) */}
       {showModal && (
         <EmailModal
@@ -135,7 +123,7 @@ export function Result() {
 
       <Header />
 
-      {/* Contenu principal (toujours visible, mais non interactif si non unlocked) */}
+      {/* Contenu principal (toujours visible, mais flouté si non unlocked) */}
       <div className={`result-content ${!project.isUnlocked ? 'locked-content' : ''}`}>
           {/* Layout 2 colonnes : Image (67%) à gauche + Devis (33%) à droite */}
           <div className="two-column-layout">
