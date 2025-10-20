@@ -32,11 +32,11 @@
   pointer-events: none;
 }
 
-.image-container.before {
+.image-container.after-base {
   z-index: 1;
 }
 
-.image-container.after {
+.image-container.before-overlay {
   z-index: 2;
 }
 
@@ -54,11 +54,11 @@
 }
 
 .label-before {
-  left: 1rem;
+  right: 1rem;
 }
 
 .label-after {
-  right: 1rem;
+  left: 1rem;
 }
 
 .slider-handle {

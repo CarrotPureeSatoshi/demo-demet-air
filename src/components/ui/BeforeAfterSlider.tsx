@@ -59,25 +59,25 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
   return (
     <div className="before-after-container" ref={containerRef}>
       <div className="before-after-wrapper">
-        {/* Image AVANT */}
-        <div className="image-container before">
-          <img src={beforeImage} alt="Avant" />
-        </div>
-
-        {/* Image APRÈS (clippée) */}
-        <div
-          className="image-container after"
-          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-        >
+        {/* Image APRÈS (végétalisée) en arrière-plan complet */}
+        <div className="image-container after-base">
           <img src={afterImage} alt="Après" />
         </div>
 
+        {/* Image AVANT (originale) clippée par dessus */}
+        <div
+          className="image-container before-overlay"
+          style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
+        >
+          <img src={beforeImage} alt="Avant" />
+        </div>
+
         {/* Badges - affichés selon la position du slider */}
-        {sliderPosition < 90 && (
-          <div className="label label-before">AVANT</div>
-        )}
         {sliderPosition > 10 && (
           <div className="label label-after">APRÈS</div>
+        )}
+        {sliderPosition < 90 && (
+          <div className="label label-before">AVANT</div>
         )}
 
         {/* Slider handle */}
