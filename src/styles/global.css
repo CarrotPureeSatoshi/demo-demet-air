@@ -29,3 +29,15 @@ main {
   flex: 1;
   padding: 2rem;
 }
+
+/* Masquer tout widget ou popup indésirable */
+[class*="price"],
+[class*="pricing"],
+[class*="widget"]:not(.before-after-wrapper):not(.image-container):not(.slider-handle) {
+  /* Ne masquer que si ce n'est pas un composant légitime */
+}
+
+/* Si un élément flottant apparait en haut à droite */
+[style*="position: fixed"][style*="top"][style*="right"]:not(.demo-header):not(.search-modal-overlay) {
+  display: none !important;
+}
