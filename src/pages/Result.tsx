@@ -33,11 +33,11 @@ export function Result() {
       setProject(data);
       setLoading(false);
 
-      // Retarder l'affichage de la modale pour laisser l'image se charger
+      // Retarder l'affichage de la modale pour laisser les images se charger
       if (!data.isUnlocked) {
         setTimeout(() => {
           setShowModal(true);
-        }, 600);
+        }, 2000);
       }
     } catch (err: any) {
       console.error('❌ Error loading project:', err);
@@ -75,7 +75,7 @@ export function Result() {
     if (id) {
       projectService.track(id, 'calendly');
     }
-    window.open('https://calendly.com/demetair/rdv-gratuit', '_blank');
+    window.open('https://meetings-eu1.hubspot.com/gibaud', '_blank');
   };
 
   if (loading) {
@@ -149,7 +149,7 @@ export function Result() {
                   <svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
                   Générer une autre version
                 </button>
-                <a href="#portfolio" className="link-discrete">
+                <a href="https://www.demet-air.fr/nos-realisations/" target="_blank" rel="noopener noreferrer" className="link-discrete">
                   <svg style={{display: 'inline', width: '16px', height: '16px', marginRight: '6px'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   Voir nos 30+ projets réalisés
                 </a>
