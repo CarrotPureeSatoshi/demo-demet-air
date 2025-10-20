@@ -31,8 +31,14 @@ export function Result() {
       const data = await projectService.get(id);
       console.log('✅ Project loaded:', data);
       setProject(data);
-      setShowModal(!data.isUnlocked); // Afficher la modal si pas unlock
       setLoading(false);
+
+      // Retarder l'affichage de la modale pour laisser l'image se charger
+      if (!data.isUnlocked) {
+        setTimeout(() => {
+          setShowModal(true);
+        }, 600);
+      }
     } catch (err: any) {
       console.error('❌ Error loading project:', err);
       const errorMessage = err.response?.status === 404 

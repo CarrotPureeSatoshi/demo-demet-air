@@ -70,22 +70,6 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
       <div className="email-modal">
         <h2>🎉 VOTRE PROJET EST PRÊT !</h2>
 
-        {estimation && (
-          <div className="teasing-info">
-            <p className="teasing-item">
-              💰 Estimation : {formatPrice(estimation.prix_total_min)} - {formatPrice(estimation.prix_total_max)}
-            </p>
-            <p className="teasing-item">
-              📏 Surface détectée : ~{estimation.surface_m2} m²
-            </p>
-            <p className="teasing-item">
-              📍 Localisation : {estimation.localisation}
-            </p>
-          </div>
-        )}
-
-        <div className="separator" />
-
         <p className="modal-instruction">
           Pour débloquer votre visualisation et prendre rendez-vous :
         </p>
