@@ -93,7 +93,7 @@ export class ProjectService {
 
       // Convertir le data URL base64 en Buffer pour sauvegarde
       const base64Data = generatedImageDataUrl.replace(/^data:image\/\w+;base64,/, '');
-      let imageBuffer = Buffer.from(base64Data, 'base64');
+      let imageBuffer: Buffer = Buffer.from(base64Data, 'base64');
 
       // Redimensionner l'image générée pour qu'elle corresponde aux dimensions exactes de l'originale
       try {
