@@ -27,16 +27,25 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
           region: 'eu1',
           target: '#hubspot-form-container',
           onFormSubmitted: async (_$form: any, data: any) => {
+            console.log('🎉 HubSpot form submitted!', data);
+
             // Récupérer l'email soumis
             const emailField = data.submissionValues.find((field: any) => field.name === 'email');
             const email = emailField?.value;
 
+            console.log('📧 Email extracted:', email);
+
             if (email) {
               try {
+                console.log('🔓 Calling unlock API...');
                 await onSubmit(email);
+                console.log('✅ Unlock successful, modal should close now');
               } catch (error) {
-                console.error('Error unlocking project:', error);
+                console.error('❌ Error unlocking project:', error);
+                alert('Erreur lors du déblocage. Veuillez réessayer.');
               }
+            } else {
+              console.error('❌ No email found in submission');
             }
           },
         });
