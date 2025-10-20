@@ -9,10 +9,10 @@ export async function projectRoutes(
   projectService: ProjectService
 ) {
   /**
-   * POST /api/projects
+   * POST /projects
    * Upload image et créer un projet
    */
-  fastify.post('/api/projects', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.post('/projects', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const data = await request.file();
 
@@ -64,10 +64,10 @@ export async function projectRoutes(
   });
 
   /**
-   * POST /api/projects/:id/generate
+   * POST /projects/:id/generate
    * Générer la visualisation végétalisée
    */
-  fastify.post('/api/projects/:id/generate', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.post('/projects/:id/generate', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const { id } = request.params as { id: string };
       const body = request.body as { location?: string };
@@ -94,10 +94,10 @@ export async function projectRoutes(
   });
 
   /**
-   * GET /api/projects/:id
+   * GET /projects/:id
    * Récupérer un projet
    */
-  fastify.get('/api/projects/:id', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.get('/projects/:id', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const { id } = request.params as { id: string };
       const project = await projectService.getProject(id);
@@ -132,10 +132,10 @@ export async function projectRoutes(
   });
 
   /**
-   * POST /api/projects/:id/unlock
+   * POST /projects/:id/unlock
    * Débloquer avec email (collecte uniquement)
    */
-  fastify.post('/api/projects/:id/unlock', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.post('/projects/:id/unlock', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const { id } = request.params as { id: string };
       const body = request.body as { email: string };
@@ -171,10 +171,10 @@ export async function projectRoutes(
   });
 
   /**
-   * POST /api/projects/:id/track
+   * POST /projects/:id/track
    * Tracker une action (calendly uniquement)
    */
-  fastify.post('/api/projects/:id/track', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastify.post('/projects/:id/track', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const { id } = request.params as { id: string };
       const body = request.body as { action: 'calendly' };
@@ -193,10 +193,10 @@ export async function projectRoutes(
   });
 
   /**
-   * GET /api/health
+   * GET /health
    * Health check
    */
-  fastify.get('/api/health', async (_request, reply) => {
+  fastify.get('/health', async (_request, reply) => {
     return reply.send({ status: 'ok', service: 'demo-demet-air' });
   });
 }
