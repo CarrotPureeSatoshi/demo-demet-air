@@ -29,9 +29,8 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
           onFormSubmitted: async (_$form: any, data: any) => {
             console.log('🎉 HubSpot form submitted!', data);
 
-            // Récupérer l'email soumis
-            const emailField = data.submissionValues.find((field: any) => field.name === 'email');
-            const email = emailField?.value;
+            // Récupérer l'email soumis (submissionValues est un objet, pas un array)
+            const email = data.submissionValues?.email || data.submissionValues?.Email;
 
             console.log('📧 Email extracted:', email);
 
@@ -43,7 +42,7 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
 
               console.log('✅ Form submitted, API called');
             } else {
-              console.error('❌ No email found in submission');
+              console.error('❌ No email found in submission. Data:', data);
             }
           },
         });
