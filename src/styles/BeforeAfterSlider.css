@@ -41,7 +41,7 @@
 }
 
 .image-container.before-overlay img {
-  transform: scale(0.95);
+  transform: scale(0.88);
   transform-origin: center;
 }
 
