@@ -17,7 +17,7 @@
   color: #4a7c25;
 }
 
-/* Background normal (pas d'image en fond) */
+/* Background - same as page content background */
 .background-container {
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: #f5f7fa;
+  background: white;
 }
 
 /* Contenu principal */
@@ -36,31 +36,34 @@
   background: white;
 }
 
-/* Layout 2 colonnes */
+/* Layout 2 colonnes : Image à gauche (67%), Devis à droite (33%) */
 .two-column-layout {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* 33% / 67% */
+  grid-template-columns: 2fr 1fr; /* 67% image / 33% devis */
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
 }
 
 .left-column {
-  /* Colonne du devis */
-}
-
-.right-column {
-  /* Colonne de l'image */
+  /* Colonne de l'image (maintenant à gauche) */
   display: flex;
   align-items: stretch;
   justify-content: center;
-  min-height: 70vh;
+  min-height: 80vh;
 }
 
-.right-column > * {
+.left-column > * {
   width: 100%;
   height: 100%;
+}
+
+.right-column {
+  /* Colonne du devis (maintenant à droite) */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -69,11 +72,17 @@
   }
 }
 
-.result-header {
+.header {
+  padding: 2rem;
   text-align: center;
-  padding: 1.5rem;
   background: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 2rem;
+  color: #2d5016;
+  margin: 0;
 }
 
 /* Estimation block */
@@ -168,9 +177,13 @@
   color: #333;
 }
 
-/* CTAs */
+/* CTAs - En haut de la colonne droite */
 .cta-container {
   text-align: center;
+  background: #f0f8f0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid #4a7c25;
 }
 
 .btn-primary.large {
@@ -240,8 +253,10 @@
 
 .email-confirmation {
   text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  margin-top: 2rem;
+  color: #2d5016;
+  font-size: 0.95rem;
   padding: 1rem;
+  background: #e8f5e9;
+  border-radius: 8px;
+  font-weight: 500;
 }
