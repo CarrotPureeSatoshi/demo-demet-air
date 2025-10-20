@@ -102,6 +102,13 @@ body > div:not(#root) {
   background: white;
 }
 
+/* Contenu verrouillé (quand modal affichée) */
+.result-content.locked-content {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
 /* Layout 2 colonnes : Image à gauche (67%), Devis à droite (33%) */
 .two-column-layout {
   display: grid;

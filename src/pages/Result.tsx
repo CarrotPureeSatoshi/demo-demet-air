@@ -130,9 +130,8 @@ export function Result() {
 
       <Header />
 
-      {/* Contenu principal (visible uniquement si unlocked) */}
-      {project.isUnlocked && (
-        <div className="result-content">
+      {/* Contenu principal (toujours visible, mais non interactif si non unlocked) */}
+      <div className={`result-content ${!project.isUnlocked ? 'locked-content' : ''}`}>
           {/* Layout 2 colonnes : Image (67%) à gauche + Devis (33%) à droite */}
           <div className="two-column-layout">
             {/* Colonne gauche : Image avant/après */}
@@ -264,7 +263,7 @@ export function Result() {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
