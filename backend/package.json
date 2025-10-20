@@ -38,6 +38,7 @@
     "mongoose": "^8.5.3",
     "nodemailer": "^7.0.9",
     "openai": "^6.5.0",
+    "sharp": "^0.34.4",
     "typescript": "^5.5.4",
     "uuid": "^11.0.4"
   },

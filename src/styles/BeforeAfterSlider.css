@@ -14,7 +14,6 @@
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   user-select: none;
-  background: #000; /* Fond noir pour éviter les espaces blancs */
 }
 
 .image-container {
@@ -28,7 +27,7 @@
 .image-container img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   pointer-events: none;
 }
