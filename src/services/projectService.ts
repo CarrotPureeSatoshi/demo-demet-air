@@ -43,7 +43,7 @@ export const projectService = {
       formData.append('description', userDescription);
     }
 
-    const response = await apiClient.post('/api/projects', formData, {
+    const response = await apiClient.post('/projects', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -56,7 +56,7 @@ export const projectService = {
    * Générer la visualisation végétalisée
    */
   async generate(projectId: string, location: string = 'France'): Promise<ProjectGenerateResponse> {
-    const response = await apiClient.post(`/api/projects/${projectId}/generate`, {
+    const response = await apiClient.post(`/projects/${projectId}/generate`, {
       location,
     });
 
@@ -67,7 +67,7 @@ export const projectService = {
    * Récupérer un projet par ID
    */
   async get(projectId: string): Promise<ProjectGetResponse> {
-    const response = await apiClient.get(`/api/projects/${projectId}`);
+    const response = await apiClient.get(`/projects/${projectId}`);
     return response.data;
   },
 
@@ -75,7 +75,7 @@ export const projectService = {
    * Débloquer avec email
    */
   async unlock(projectId: string, email: string): Promise<ProjectUnlockResponse> {
-    const response = await apiClient.post(`/api/projects/${projectId}/unlock`, {
+    const response = await apiClient.post(`/projects/${projectId}/unlock`, {
       email,
     });
 
@@ -86,7 +86,7 @@ export const projectService = {
    * Tracker une action (calendly, pdf)
    */
   async track(projectId: string, action: 'calendly' | 'pdf'): Promise<void> {
-    await apiClient.post(`/api/projects/${projectId}/track`, {
+    await apiClient.post(`/projects/${projectId}/track`, {
       action,
     });
   },
