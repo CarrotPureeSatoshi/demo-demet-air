@@ -108,11 +108,9 @@ body > div:not(#root) {
 
 /* Contenu verrouillé (quand modal affichée) */
 .result-content.locked-content {
-  filter: blur(8px);
+  filter: blur(6px);
   pointer-events: none;
   user-select: none;
-  background: white;
-  opacity: 0.7;
 }
 
 /* Layout 2 colonnes : Image à gauche (67%), Devis à droite (33%) */
