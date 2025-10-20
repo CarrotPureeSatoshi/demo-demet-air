@@ -62,8 +62,19 @@ async function start() {
 
   // Serve uploaded files if using local storage
   if (config.STORAGE_TYPE === 'local') {
+    const uploadsPath = path.join(__dirname, '..', config.LOCAL_STORAGE_PATH);
+
+    // Create uploads directory if it doesn't exist
+    const fs = await import('fs/promises');
+    try {
+      await fs.mkdir(uploadsPath, { recursive: true });
+      console.log(`✅ Uploads directory created: ${uploadsPath}`);
+    } catch (err) {
+      console.log(`📁 Uploads directory already exists: ${uploadsPath}`);
+    }
+
     await fastify.register(fastifyStatic, {
-      root: path.join(__dirname, '..', config.LOCAL_STORAGE_PATH),
+      root: uploadsPath,
       prefix: '/uploads/',
     });
   }

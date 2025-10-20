@@ -9,6 +9,7 @@ export const config = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: parseInt(process.env.PORT || '4001', 10),
   HOST: process.env.HOST || '0.0.0.0',
+  PUBLIC_URL: process.env.PUBLIC_URL || 'http://localhost:4001',
 
   // MongoDB
   MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27018/demo-demet-air',

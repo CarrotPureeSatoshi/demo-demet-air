@@ -90,7 +90,8 @@ export class StorageService {
 
     await fs.writeFile(filepath, buffer);
 
-    const url = `/uploads/${key}`;
+    // Return full public URL so OpenRouter can access the image
+    const url = `${config.PUBLIC_URL}/uploads/${key}`;
 
     return {
       url,
