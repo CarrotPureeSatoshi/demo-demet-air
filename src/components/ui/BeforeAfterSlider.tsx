@@ -11,6 +11,7 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [imageRatio, setImageRatio] = useState<string>('16 / 9'); // Ratio par défaut
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -35,6 +36,17 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
     handleMove(e.touches[0].clientX);
   };
 
+  // Détecter les dimensions de l'image "Avant" et adapter le conteneur
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      const ratio = `${img.width} / ${img.height}`;
+      setImageRatio(ratio);
+      console.log('Image ratio detected:', ratio, `(${img.width}x${img.height})`);
+    };
+    img.src = beforeImage;
+  }, [beforeImage]);
+
   useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
@@ -58,7 +70,10 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
 
   return (
     <div className="before-after-container" ref={containerRef}>
-      <div className="before-after-wrapper">
+      <div
+        className="before-after-wrapper"
+        style={{ aspectRatio: imageRatio }}
+      >
         {/* Image APRÈS (végétalisée) en arrière-plan complet */}
         <div className="image-container after-base">
           <img src={afterImage} alt="Après" />
