@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { projectService, ProjectGetResponse } from '../services/projectService';
 import { BeforeAfterSlider } from '../components/ui/BeforeAfterSlider';
 import { EmailModal } from '../components/modals/EmailModal';
+import { Header } from '../components/layout/Header';
 import '../styles/Result.css';
 
 export function Result() {
@@ -19,15 +20,25 @@ export function Result() {
   }, [id]);
 
   const loadProject = async () => {
-    if (!id) return;
+    if (!id) {
+      setError('ID de projet manquant');
+      setLoading(false);
+      return;
+    }
 
     try {
+      console.log('🔍 Loading project:', id);
       const data = await projectService.get(id);
+      console.log('✅ Project loaded:', data);
       setProject(data);
       setShowModal(!data.isUnlocked); // Afficher la modal si pas unlock
       setLoading(false);
-    } catch (err) {
-      setError('Projet non trouvé');
+    } catch (err: any) {
+      console.error('❌ Error loading project:', err);
+      const errorMessage = err.response?.status === 404 
+        ? 'Projet non trouvé. Il a peut-être expiré.' 
+        : 'Erreur lors du chargement du projet';
+      setError(errorMessage);
       setLoading(false);
     }
   };
@@ -72,7 +83,16 @@ export function Result() {
   if (error || !project) {
     return (
       <div className="result-page error">
-        <h2>{error}</h2>
+        <div className="error-container">
+          <h2>❌ {error}</h2>
+          <p>Le projet demandé n'existe pas ou a expiré.</p>
+          <button 
+            className="btn-primary" 
+            onClick={() => window.location.href = '/'}
+          >
+            ← Retour à l'accueil
+          </button>
+        </div>
       </div>
     );
   }
@@ -108,13 +128,11 @@ export function Result() {
         />
       )}
 
+      <Header />
+
       {/* Contenu principal (visible uniquement si unlocked) */}
       {project.isUnlocked && (
         <div className="result-content">
-          <header className="header">
-            <h1 className="logo">🌿 DEMET'AIR</h1>
-          </header>
-
           {/* Layout 2 colonnes : Image (67%) à gauche + Devis (33%) à droite */}
           <div className="two-column-layout">
             {/* Colonne gauche : Image avant/après */}

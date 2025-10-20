@@ -3,19 +3,7 @@
 .upload-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
-
-.header {
-  padding: 2rem;
-  text-align: center;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.logo {
-  font-size: 2rem;
-  color: #2d5016;
-  margin: 0;
+  padding-top: 180px; /* Espace pour le header fixed */
 }
 
 .upload-main {

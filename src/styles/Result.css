@@ -3,6 +3,7 @@
 .result-page {
   min-height: 100vh;
   position: relative;
+  padding-top: 180px; /* Espace pour le header fixed */
 }
 
 .result-page.loading, .result-page.error {
@@ -15,6 +16,45 @@
 .loader {
   font-size: 1.5rem;
   color: #4a7c25;
+}
+
+.error-container {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+}
+
+.error-container h2 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.error-container p {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.error-container .btn-primary {
+  padding: 1rem 2rem;
+  background: #4a7c25;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error-container .btn-primary:hover {
+  background: #2d5016;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 124, 37, 0.3);
 }
 
 /* Background - same as page content background */
@@ -72,18 +112,7 @@
   }
 }
 
-.header {
-  padding: 2rem;
-  text-align: center;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.logo {
-  font-size: 2rem;
-  color: #2d5016;
-  margin: 0;
-}
+/* Header maintenant géré par le composant Header.tsx */
 
 /* Estimation block */
 .estimation-block {
@@ -188,15 +217,16 @@
 
 .btn-primary.large {
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   background: linear-gradient(135deg, #4a7c25 0%, #2d5016 100%);
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 1rem;
+  transition: all 0.2s ease;
 }
 
 .btn-primary.large:hover {

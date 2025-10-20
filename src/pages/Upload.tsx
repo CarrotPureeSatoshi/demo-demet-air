@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { projectService } from '../services/projectService';
+import { Header } from '../components/layout/Header';
 import '../styles/Upload.css';
 
 export function Upload() {
@@ -112,9 +113,7 @@ export function Upload() {
 
   return (
     <div className="upload-page">
-      <header className="header">
-        <h1 className="logo">🌿 DEMET'AIR</h1>
-      </header>
+      <Header />
 
       <main className="upload-main">
         <h2 className="title">Visualisez votre projet végétalisé en 30 secondes</h2>
