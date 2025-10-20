@@ -130,7 +130,6 @@ export function Result() {
       {showModal && (
         <EmailModal
           onSubmit={handleUnlock}
-          estimation={estimation}
         />
       )}
 

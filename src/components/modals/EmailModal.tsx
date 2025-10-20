@@ -5,10 +5,9 @@ import '../../styles/EmailModal.css';
 
 interface EmailModalProps {
   onSubmit: (email: string) => Promise<void>;
-  estimation: any;
 }
 
-export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
+export function EmailModal({ onSubmit }: EmailModalProps) {
   useEffect(() => {
     // Charger le script HubSpot
     const script = document.createElement('script');
@@ -56,14 +55,6 @@ export function EmailModal({ onSubmit, estimation }: EmailModalProps) {
       document.body.removeChild(script);
     };
   }, [onSubmit]);
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
 
   return (
     <div className="email-modal-overlay">
