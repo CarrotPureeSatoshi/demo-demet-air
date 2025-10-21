@@ -5,6 +5,7 @@ import '../../styles/Header.css';
 
 export function Header() {
   const [showSearchModal, setShowSearchModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
@@ -76,8 +77,19 @@ export function Header() {
 
             {/* Actions */}
             <div className="nav-actions">
-              <button 
-                className="search-btn" 
+              {/* Burger Menu - Mobile only */}
+              <button
+                className={`burger-menu ${mobileMenuOpen ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Menu"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+
+              <button
+                className="search-btn"
                 onClick={() => setShowSearchModal(true)}
                 title="Rechercher (non disponible en démo)"
               >
@@ -92,6 +104,37 @@ export function Header() {
             </div>
           </div>
         </nav>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
+          <ul>
+            <li>
+              <button className="nav-link" disabled title="Démo uniquement">
+                ACCUEIL
+              </button>
+            </li>
+            <li>
+              <button className="nav-link" disabled title="Démo uniquement">
+                QUI SOMMES-NOUS ?
+              </button>
+            </li>
+            <li>
+              <button className="nav-link" disabled title="Démo uniquement">
+                NOS SOLUTIONS
+              </button>
+            </li>
+            <li>
+              <button className="nav-link" disabled title="Démo uniquement">
+                NOS RÉALISATIONS
+              </button>
+            </li>
+            <li>
+              <button className="nav-link" disabled title="Démo uniquement">
+                DOCUMENTATION
+              </button>
+            </li>
+          </ul>
+        </div>
 
       </header>
 
