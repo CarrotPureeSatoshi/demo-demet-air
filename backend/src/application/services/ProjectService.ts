@@ -1,8 +1,6 @@
 // Service Applicatif Principal - Orchestration du flow projet
 
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
-import sharp from 'sharp';
 import { IProjectRepository } from '../../domain/repositories/IProjectRepository.js';
 import { ILeadRepository } from '../../domain/repositories/ILeadRepository.js';
 import { Project, ProjectMetadata } from '../../domain/entities/Project.js';
@@ -93,34 +91,7 @@ export class ProjectService {
 
       // Convertir le data URL base64 en Buffer pour sauvegarde
       const base64Data = generatedImageDataUrl.replace(/^data:image\/\w+;base64,/, '');
-      let imageBuffer: Buffer = Buffer.from(base64Data, 'base64');
-
-      // Redimensionner l'image générée pour qu'elle corresponde aux dimensions exactes de l'originale
-      try {
-        // Télécharger l'image originale pour obtenir ses dimensions
-        const originalResponse = await axios.get(project.originalImageUrl, { responseType: 'arraybuffer' });
-        const originalBuffer = Buffer.from(originalResponse.data);
-
-        // Obtenir les dimensions de l'image originale
-        const originalMetadata = await sharp(originalBuffer).metadata();
-        const targetWidth = originalMetadata.width!;
-        const targetHeight = originalMetadata.height!;
-
-        console.log(`📐 Resizing generated image to match original: ${targetWidth}x${targetHeight}`);
-
-        // Redimensionner l'image générée pour correspondre exactement
-        imageBuffer = await sharp(imageBuffer)
-          .resize(targetWidth, targetHeight, {
-            fit: 'cover', // Garde les proportions, crop si nécessaire
-            position: 'center',
-          })
-          .toBuffer() as Buffer;
-
-        console.log(`✅ Image resized successfully`);
-      } catch (resizeError) {
-        console.error('⚠️  Failed to resize generated image, using original:', resizeError);
-        // En cas d'erreur, continuer avec l'image non redimensionnée
-      }
+      const imageBuffer = Buffer.from(base64Data, 'base64');
 
       // Déterminer l'extension depuis le data URL
       const mimeMatch = generatedImageDataUrl.match(/^data:image\/(\w+);base64,/);

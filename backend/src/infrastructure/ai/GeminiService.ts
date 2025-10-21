@@ -252,6 +252,7 @@ ${analysisData.obstacles.map(obs => `- ${obs}`).join('\n')}
 4. PROPORTIONS : Les bâtiments doivent avoir les mêmes proportions dans l'image
 5. ÉLÉMENTS : Tous les éléments visibles dans l'original doivent rester visibles au même endroit
 6. PERSPECTIVE : Maintenir la même perspective et profondeur de champ
+7. DIMENSIONS : Générer l'image avec EXACTEMENT les mêmes dimensions (largeur × hauteur) que l'image originale fournie
 
 **INSTRUCTIONS DE VÉGÉTALISATION :**
 - Ajouter la végétation UNIQUEMENT sur les zones spécifiées
