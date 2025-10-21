@@ -115,3 +115,36 @@
   font-size: 0.95rem;
   font-weight: 500;
 }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .before-after-container {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    top: 0.5rem;
+  }
+
+  .label-before {
+    right: 0.5rem;
+  }
+
+  .label-after {
+    left: 0.5rem;
+  }
+
+  .handle-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .slider-instruction {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+}

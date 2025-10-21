@@ -123,3 +123,32 @@
   color: #666;
   font-size: 0.95rem;
 }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .email-modal {
+    padding: 1.5rem;
+  }
+
+  .email-modal h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .teasing-info {
+    padding: 1rem;
+  }
+
+  .teasing-item {
+    font-size: 0.95rem;
+  }
+
+  .modal-instruction {
+    font-size: 0.95rem;
+  }
+
+  .btn-unlock {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+}

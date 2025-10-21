@@ -143,9 +143,61 @@ body > div:not(#root) {
   gap: 1.5rem;
 }
 
+/* Tablet: passe en 1 colonne */
 @media (max-width: 1024px) {
   .two-column-layout {
     grid-template-columns: 1fr;
+  }
+
+  .left-column {
+    min-height: 60vh;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .result-content {
+    padding-top: 140px;
+    padding-bottom: 1rem;
+  }
+
+  .two-column-layout {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .left-column {
+    min-height: 50vh;
+  }
+
+  .estimation-block {
+    padding: 1rem;
+  }
+
+  .estimation-block h2 {
+    font-size: 1.1rem;
+  }
+
+  .estimation-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .inclus-block {
+    padding: 1.25rem;
+  }
+
+  .cta-container {
+    padding: 1.25rem;
+  }
+
+  .btn-primary.large {
+    font-size: 0.95rem;
+  }
+
+  .email-confirmation {
+    font-size: 0.9rem;
+    padding: 0.75rem;
   }
 }
 
