@@ -36,16 +36,16 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
     handleMove(e.touches[0].clientX);
   };
 
-  // Détecter les dimensions de l'image "Après" (générée) et adapter le conteneur
+  // Détecter les dimensions de l'image "Avant" (originale) et adapter le conteneur
   useEffect(() => {
     const img = new Image();
     img.onload = () => {
       const ratio = `${img.width} / ${img.height}`;
       setImageRatio(ratio);
-      console.log('Image ratio detected:', ratio, `(${img.width}x${img.height})`);
+      console.log('Image ratio detected (BEFORE):', ratio, `(${img.width}x${img.height})`);
     };
-    img.src = afterImage;
-  }, [afterImage]);
+    img.src = beforeImage;
+  }, [beforeImage]);
 
   useEffect(() => {
     if (isDragging) {
