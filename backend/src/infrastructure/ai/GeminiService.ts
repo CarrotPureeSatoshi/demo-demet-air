@@ -218,7 +218,9 @@ ANALYSE DÉTAILLÉE :
     // Même logique que NanoBananaService
     const isToiture = typeStructure === 'toiture';
 
-    let prompt = `Tu es un architecte paysagiste professionnel spécialisé en végétalisation de façades et murs végétaux. Ta mission est de créer une image ULTRA-RÉALISTE montrant la structure végétalisée selon les spécifications DEMET'AIR.
+    let prompt = `GENERATE a photorealistic image that transforms the provided building into a vegetalized structure with DEMET'AIR green panels.
+
+You are a professional landscape architect specialized in facade and green wall vegetalization. Create an ULTRA-REALISTIC image showing the vegetalized structure according to DEMET'AIR specifications.
 
 ⚠️ RÈGLE ABSOLUE - CADRAGE IDENTIQUE :
 - CONSERVE EXACTEMENT le même point de vue que l'image originale
