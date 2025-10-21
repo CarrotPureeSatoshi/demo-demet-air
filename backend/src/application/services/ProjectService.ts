@@ -111,7 +111,8 @@ export class ProjectService {
         // Redimensionner l'image générée pour correspondre exactement
         imageBuffer = await sharp(imageBuffer)
           .resize(targetWidth, targetHeight, {
-            fit: 'fill', // Force exact dimensions, may distort
+            fit: 'cover', // Garde les proportions, crop si nécessaire
+            position: 'center',
           })
           .toBuffer() as Buffer;
 
