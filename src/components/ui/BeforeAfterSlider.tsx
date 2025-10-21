@@ -36,7 +36,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
     handleMove(e.touches[0].clientX);
   };
 
-  // Détecter les dimensions de l'image "Avant" et adapter le conteneur
+  // Détecter les dimensions de l'image "Après" (générée) et adapter le conteneur
   useEffect(() => {
     const img = new Image();
     img.onload = () => {
@@ -44,8 +44,8 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
       setImageRatio(ratio);
       console.log('Image ratio detected:', ratio, `(${img.width}x${img.height})`);
     };
-    img.src = beforeImage;
-  }, [beforeImage]);
+    img.src = afterImage;
+  }, [afterImage]);
 
   useEffect(() => {
     if (isDragging) {
