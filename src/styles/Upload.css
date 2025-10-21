@@ -6,6 +6,12 @@
   padding-top: 180px; /* Espace pour le header fixed */
 }
 
+@media (max-width: 768px) {
+  .upload-page {
+    padding-top: 80px; /* Header mobile plus petit */
+  }
+}
+
 .upload-main {
   max-width: 600px;
   margin: 3rem auto;
